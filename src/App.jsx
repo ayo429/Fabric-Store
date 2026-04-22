@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { CartProvider } from "../src/Context/Cartcontext";
+import { Toaster } from 'react-hot-toast';
 import Home from "./pages/Hero";
 import Products from "./pages/Products";
 import Products2 from "./pages/Products2";
@@ -21,6 +22,7 @@ function App() {
   return (
     <CartProvider>
       <Router>
+           <Toaster position="top-right" /> 
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Products" element={<Products />} />
