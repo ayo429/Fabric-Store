@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../shared components/Navbar";
-import Button from "../shared components/button";
 import Searchbutton from "../shared components/Searchbutton";
 import { Cbfabrics } from "../Data/Cbfabrics";
 import Navigation from "../shared components/Navigation";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../shared components/Navbar";
-import Button from "../shared components/button";
+import Button from "../shared components/Button";
 import Searchbutton from "../shared components/Searchbutton";
 import { Vintages } from "../Data/Vintages";
 import { useProductSearch } from "../shared components/Hook";
