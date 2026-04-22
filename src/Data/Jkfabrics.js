@@ -9,7 +9,6 @@ import fb8 from '/public/jonkoso fabrics/jk mustard.jpeg'
 import fb9 from '/public/jonkoso fabrics/jk olive.jpeg'
 import fb10 from '/public/jonkoso fabrics/olive green.jpeg'
 import fb11 from '/public/jonkoso fabrics/jk wine.jpeg'
-import fb12 from '/public/jonkoso fabrics/jk peach.jpeg'
 
 export const Jkfabrics = [
   {
@@ -100,14 +99,6 @@ export const Jkfabrics = [
     image: fb11,
     price: 5000
   },
-  {
-    id: '12',
-    color: "Peach",
-    description: "plain jonkoso",
-     note:'price is per yard',
-    image: fb12,
-    price: 5000
-  }
 
 ];
 
