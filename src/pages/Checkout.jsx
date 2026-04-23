@@ -1,10 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "../Context/Cartcontext";
 import Navbar from "../shared components/Navbar";
 import Button from "../shared components/Button";
+import { useAuth } from "../Context/AuthContext";
 
 function Checkout() {
-  const { cart, removeFromCart, totalPrice } = useCart();
+  const { cart, removeFromCart, totalPrice, increaseQuantity, decreaseQuantity } = useCart();
+  const { user } = useAuth();
+  const [name, setName] = useState('');
+  const [address, setAddress] = useState('');
+
+  const handleOrder = () => {
+    if (!name || !address) {
+      alert('Please enter your name and delivery address');
+      return;
+    }
+
+    const orderDetails = cart.map(item =>
+      `• ${item.color} x${item.quantity} = ₦${item.price * item.quantity}`
+    ).join('\n');
+
+    const message = `
+Hello! I just placed an order on your fabric store 🛍️
+
+*Customer Details:*
+Name: ${name}
+Email: ${user ? user.email : 'Guest'}
+Address: ${address}
+
+*Order Details:*
+${orderDetails}
+
+*Total: ₦${totalPrice}*
+
+Please confirm my order. Thank you!
+    `;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappNumber = "2348124639774"; // replace with your number
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    window.open(whatsappURL, '_blank');
+  };
 
   return (
     <>
@@ -51,8 +87,30 @@ function Checkout() {
               <span>₦{totalPrice}</span>
             </div>
 
-            <button className="mt-6 bg-red-800 text-white px-8 py-3 rounded-lg w-full mb-10">
-              Proceed to Checkout
+            {/* Customer details form */}
+            <div className="flex flex-col gap-4 mt-6">
+              <h3 className="text-xl font-bold">Delivery Details</h3>
+              <input
+                type="text"
+                placeholder="Your full name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="border rounded-lg px-4 py-2 w-full outline-none"
+              />
+              <textarea
+                placeholder="Your delivery address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                className="border rounded-lg px-4 py-2 w-full outline-none"
+                rows={3}
+              />
+            </div>
+
+            {/* WhatsApp order button */}
+            <button
+              onClick={handleOrder}
+              className="mt-6 bg-green-600 text-white px-8 py-3 rounded-lg w-full font-semibold mb-10">
+              Complete Order via WhatsApp 📲
             </button>
           </>
         )}

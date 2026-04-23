@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { CartProvider } from "../src/Context/Cartcontext";
+import { AuthProvider } from "./Context/AuthContext";
 import { Toaster } from 'react-hot-toast';
 import Home from "./pages/Hero";
 import Products from "./pages/Products";
@@ -18,11 +19,14 @@ import Products5Details from "./pages/Products5Details";
 import Products6Details from "./pages/Products6Details";
 import About from "./pages/About";
 import Varities from "./pages/Varities";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup"
 function App() {
   return (
-    <CartProvider>
+    <AuthProvider>
+      <CartProvider>
       <Router>
-           <Toaster position="top-right" /> 
+           <Toaster position="top-right" />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Products" element={<Products />} />
@@ -40,9 +44,12 @@ function App() {
           <Route path="/Products6/:id" element={<Products6Details />} />
           <Route path="/About" element={<About/>}/>
           <Route path="/Varities" element={<Varities/>}/>
+          <Route path="/Login" element={<Login/>}/>
+          <Route path="/Signup" element={<Signup/>}/>
         </Routes>
       </Router>
     </CartProvider>
+    </AuthProvider>
   );
 }
 
