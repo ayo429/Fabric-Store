@@ -2,12 +2,12 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDdhDtL6MJC-qKQ7NpSc6QjxDpuwh7tcRo",
-  authDomain: "fabric-store-4cc85.firebaseapp.com",
-  projectId: "fabric-store-4cc85",
-  storageBucket: "fabric-store-4cc85.firebasestorage.app",
-  messagingSenderId: "859692397408",
-  appId: "1:859692397408:web:75a0eb27cab4831c38a405"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
